@@ -36,7 +36,7 @@ LogBans: false
 
 # If ban logging is enabled, please specify the directory
 # where Reflex will create log files
-LogDirectory: '/home/minecraft/logs/reflex/'
+LogDirectory: '/home/server/logs/reflex/'
 
 # If player has been "kicked" by Reflexx this amount of
 # times, commands below are going to be dispatched

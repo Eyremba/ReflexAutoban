@@ -14,8 +14,10 @@ public class KicksInvalidate {
         if (MODE == 0)
             return;
 
+        final int repeatDelay = KICKS_INVALIDATE_DELAY * 1200;
+
         Bukkit.getScheduler().scheduleSyncRepeatingTask(ViolationHandler.asPlugin(),
-                this::inv, 0, KICKS_INVALIDATE_DELAY * 1200);
+                this::inv, repeatDelay, repeatDelay);
     }
 
     public static void invalidate() {
