@@ -1,0 +1,48 @@
+# If player reaches a cerain amount of violations on
+# a certain check, he will be flagged as "kicked first time".
+# Repetitive reaching high amount of violations will flag
+# him as "kicked 2/3/n times"
+Thresholds:
+  FrontEntity: 2
+  KillauraCombined: 16
+  Direction: 25
+  FightSpeed: 6
+  Reach: 35
+  FastSwitch: 5
+  NPC: 5
+  Velocity: 40
+  PingSpoof: 1
+
+# Please specify how should this plugin ban players.
+# 0:  amount of "kicks" will reset only when server gets disabled,
+#     useful for mini-game (SkyWars, SurvivalGames, BedWars, etc.) servers
+#     that restart after game ends. Therefore, it will work like "if player
+#     has been "kicked" by Reflex too many times per one game, ban him".
+# 1:  amount of "kicks" is going to be reset every N minutes (option below),
+#     useful for Survival/KitPvP servers that doesn't restart often. Therefore,
+#     it will work like "if player has been "kicked" by Reflex too many times
+#     per X minutes, ban him"
+Mode: 1
+
+# If Mode over here is set to 1, how often should
+# amount of "kicks" be reset (in minutes)?
+KicksInvalidateDelay: 15
+
+# Should Reflex create files with name 'YYYY-MM-DD.log'
+# containing which players have been banned at that date,
+# check they were banned by, and amount of "kicks" they had
+LogBans: false
+
+# If ban logging is enabled, please specify the directory
+# where Reflex will create log files
+LogDirectory: '/home/minecraft/logs/reflex/'
+
+# If player has been "kicked" by Reflexx this amount of
+# times, commands below are going to be dispatched
+KicksToAct: 3
+
+# A list of commands, which will be dispatched one-by-one
+# when plaer have been "kicked" by Reflex %KicksToAct% times
+Actions:
+- reflexkick %Player% epic Combat Hacking
+- ban %Player% Reflex » Combat Hacking
