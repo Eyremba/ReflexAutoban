@@ -8,6 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="craftbukkit-1.8" level="project" />
-    <orderEntry type="library" name="Reflex-8.6-EXPERIMENTAL" level="project" />
+    <orderEntry type="library" name="Reflex" level="project" />
   </component>
 </module>

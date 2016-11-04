@@ -21,9 +21,6 @@ public class KicksInvalidate {
     }
 
     public static void invalidate() {
-        if (MODE == 1)
-            return;
-
         new KicksInvalidate().inv();
     }
 

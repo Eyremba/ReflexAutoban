@@ -28,29 +28,32 @@ public class ViolationHandler implements Listener {
 
     @EventHandler (priority = EventPriority.LOWEST)
     public void onReflexViolation(final PlayerReflexViolationEvent e) {
-        final Player p = e.getPlayer();
-        final Haxor hax = Haxor.get(p);
+        if (e.isCancelled())
+            return;
 
-        final EnumCheckType check = e.getCheckType();
-        final int vl = ReflexAPI.getViolations(p, check);
+        /* Amount of violations is updating async after VL event,
+        therefore we need to wait some unless it's up-to-date */
+        Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> {
+            final Player p = e.getPlayer();
+            final Haxor hax = Haxor.get(p);
 
-        if (vl >= thresholds.get(check)) {
-            hax.addKick();
-            ReflexAPI.setViolations(p, check, 0);
+            final EnumCheckType check = e.getCheckType();
 
-            if (hax.kicks() >= KICKS_TO_ACT) {
-                // Most of VL events are async, syncing to avoid 'async kick' error
-                Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> {
+            if (e.actualVl() >= thresholds.get(check)) {
+                hax.addKick();
+                ReflexAPI.setViolations(p, check, 0);
+
+                if (hax.kicks() >= KICKS_TO_ACT) {
                     for (final String cmd : actions)
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), ChatColor
-                                .translateAlternateColorCodes('&', cmd
-                                .replace("%Player%", p.getName())));
-                }, 1);
+                            .translateAlternateColorCodes('&', cmd
+                            .replace("%Player%", p.getName())));
 
-                ReflexAutoban.bannedPlayers.put(p, check);
-                hax.resetKicks();
+                    ReflexAutoban.bannedPlayers.put(p, check);
+                    hax.resetKicks();
+                }
             }
-        }
+        }, 1);
     }
 
     public static JavaPlugin asPlugin() {

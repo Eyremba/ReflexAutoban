@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Reflex">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../Reflex/Reflex.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
