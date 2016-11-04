@@ -44,5 +44,5 @@ KicksToAct: 3
 # A list of commands, which will be dispatched one-by-one
 # when plaer have been "kicked" by Reflex %KicksToAct% times
 Actions:
-- reflexkick %Player% epic Combat Hacking
+- reflexkick %Player% normal Combat Hacking
 - ban %Player% Reflex » Combat Hacking

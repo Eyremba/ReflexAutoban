@@ -36,7 +36,6 @@ public class ViolationHandler implements Listener {
 
         if (vl >= thresholds.get(check)) {
             hax.addKick();
-
             ReflexAPI.setViolations(p, check, 0);
 
             if (hax.kicks() >= KICKS_TO_ACT) {
