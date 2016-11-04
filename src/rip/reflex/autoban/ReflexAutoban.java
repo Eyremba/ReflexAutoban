@@ -40,6 +40,7 @@ public class ReflexAutoban extends JavaPlugin {
         thresholds.put(EnumCheckType.COMBAT_REACH, num("Thresholds.Reach"));
         thresholds.put(EnumCheckType.COMBAT_FASTSWITCH, num("Thresholds.FastSwitch"));
         thresholds.put(EnumCheckType.COMBAT_KILLAURANPC, num("Thresholds.NPC"));
+        thresholds.put(EnumCheckType.COMBAT_CRITICALS, num("Thresholds.Criticals"));
         thresholds.put(EnumCheckType.MOVEMENT_VELOCITY, num("Thresholds.Velocity"));
         thresholds.put(EnumCheckType.NET_PINGSPOOF, num("Thresholds.PingSpoof"));
 

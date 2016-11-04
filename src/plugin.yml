@@ -1,5 +1,6 @@
 name: ReflexAutoban
 main: rip.reflex.autoban.ReflexAutoban
 description: An official Reflex add-on for better autobanning
-version: 1.0
+depend: [Reflex]
 author: DarksideCode
+version: 1.0

@@ -12,6 +12,7 @@ Thresholds:
   NPC: 5
   Velocity: 40
   PingSpoof: 1
+  Criticals: 2
 
 # Please specify how should this plugin ban players.
 # 0:  amount of "kicks" will reset only when server gets disabled,
