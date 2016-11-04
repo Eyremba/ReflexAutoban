@@ -34,7 +34,7 @@ public class ViolationHandler implements Listener {
         final EnumCheckType check = e.getCheckType();
         final int vl = ReflexAPI.getViolations(p, check);
 
-        if (vl > thresholds.get(check)) {
+        if (vl >= thresholds.get(check)) {
             hax.addKick();
 
             ReflexAPI.setViolations(p, check, 0);
