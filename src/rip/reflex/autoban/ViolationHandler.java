@@ -38,22 +38,35 @@ public class ViolationHandler implements Listener {
             final Haxor hax = Haxor.get(p);
 
             final EnumCheckType check = e.getCheckType();
+            final int actualVl = e.actualVl();
 
-            if (e.actualVl() >= thresholds.get(check)) {
+            if (((check.equals(EnumCheckType.COMBAT_KILLAURANPC)) || (check.equals(EnumCheckType.COMBAT_FASTSWITCH))
+                    || (check.equals(EnumCheckType.NET_PINGSPOOF))) && (actualVl >= thresholds.get(check))) {
+                this.followActions(p, check);
+                return;
+            }
+
+            /* Some checks are too accurate to make
+            them wait, we use instant-ban for them */
+            if (actualVl >= thresholds.get(check)) {
                 hax.addKick();
-                ReflexAPI.setViolations(p, check, 0);
 
-                if (hax.kicks() >= KICKS_TO_ACT) {
-                    for (final String cmd : actions)
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), ChatColor
-                            .translateAlternateColorCodes('&', cmd
-                            .replace("%Player%", p.getName())));
-
-                    ReflexAutoban.bannedPlayers.put(p, check);
-                    hax.resetKicks();
-                }
+                if (hax.kicks() >= KICKS_TO_ACT)
+                    this.followActions(p, check);
             }
         }, 1);
+    }
+
+    private void followActions(final Player p, final EnumCheckType check) {
+        for (final String cmd : actions)
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), ChatColor
+                .translateAlternateColorCodes('&', cmd
+                .replace("%Player%", p.getName())));
+
+        ReflexAutoban.bannedPlayers.put(p, check);
+        ReflexAPI.setViolations(p, check, 0);
+
+        Haxor.get(p).resetKicks();
     }
 
     public static JavaPlugin asPlugin() {

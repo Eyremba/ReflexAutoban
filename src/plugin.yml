@@ -3,4 +3,4 @@ main: rip.reflex.autoban.ReflexAutoban
 description: An official Reflex add-on for better autobanning
 depend: [Reflex]
 author: DarksideCode
-version: 1.0
+version: 1.1

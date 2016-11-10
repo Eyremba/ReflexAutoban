@@ -1,12 +1,10 @@
 package rip.reflex.autoban;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
 import rip.reflex.api.EnumCheckType;
-
 import rip.reflex.api.ReflexAPI;
 
 import rip.reflex.autoban.util.FileHelper;
@@ -16,7 +14,6 @@ import java.io.File;
 import java.io.FileWriter;
 
 import java.io.IOException;
-
 import java.text.SimpleDateFormat;
 
 import java.util.Date;
@@ -33,18 +30,7 @@ public class ReflexAutoban extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Splitting version string 'X.Y' to ['X', 'Y']
-        final String[] version = ReflexAPI.reflexVersion().split("\\.");
-
-        if ((Integer.valueOf(version[0]) < 8) || (Integer.valueOf(version[1]) < 7)) {
-            this.getLogger().warning("Outdated Reflex version: " + ReflexAPI.reflexVersion() + "!");
-            this.getLogger().warning("Minimal required is 8.7. Please update.");
-
-            Bukkit.getPluginManager().disablePlugin(this);
-            return;
-        }
-
-        this.getLogger().info("Found compatible Reflex version " + ReflexAPI.reflexVersion() + ".");
+        this.getLogger().info("Found Reflex version " + ReflexAPI.reflexVersion() + ".");
         this.saveDefaultConfig();
 
         new ViolationHandler(this);

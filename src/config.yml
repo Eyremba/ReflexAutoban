@@ -5,11 +5,11 @@
 Thresholds:
   FrontEntity: 2
   KillauraCombined: 16
-  Direction: 25
-  FightSpeed: 6
-  Reach: 35
-  FastSwitch: 5
-  NPC: 5
+  Direction: 30
+  FightSpeed: 10
+  Reach: 85
+  FastSwitch: 10
+  NPC: 8
   Velocity: 40
   PingSpoof: 1
   Criticals: 2
